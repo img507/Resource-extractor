@@ -64,8 +64,8 @@ namespace Resource_extractor
 
             if (Directory.Exists(outputDir) && Directory.GetFileSystemEntries(outputDir).Length > 0)
             {
-                Log($"ПРОПУСК: Папка уже содержит файлы: {Path.GetFileName(outputDir)}", Color.Orange);
-                Log("Ресурсы не будут извлечены повторно.", Color.Orange);
+                Log($"ПРОПУСК: Папка уже содержит файлы: {Path.GetFileName(outputDir)}", Color.DarkOrange);
+                Log("Ресурсы не будут извлечены повторно.", Color.DarkOrange);
                 System.Diagnostics.Process.Start("explorer.exe", outputDir);
                 return;
             }
@@ -74,12 +74,12 @@ namespace Resource_extractor
             {
                 btnExtract.Enabled = false;
                 Directory.CreateDirectory(outputDir);
-                Log($"Старт извлечения из: {Path.GetFileName(resxPath)}", Color.Cyan);
+                Log($"Старт извлечения из: {Path.GetFileName(resxPath)}", Color.Blue);
 
                 ExtractAll(resxPath, outputDir);
 
-                Log("---------------------------", Color.White);
-                Log("ГОТОВО! Операция завершена.", Color.Lime);
+                Log("---------------------------", Color.Black);
+                Log("ГОТОВО! Операция завершена.", Color.Green);
 
                 System.Diagnostics.Process.Start("explorer.exe", outputDir);
             }
@@ -125,12 +125,12 @@ namespace Resource_extractor
                         try
                         {
                             img.Save(savePath, ImageFormat.Png);
-                            Log($"[IMG] Сохранено: {safeName}.png", Color.LightGray);
+                            Log($"[IMG] Сохранено: {safeName}.png", Color.DimGray);
                             countImages++;
                         }
                         catch (Exception ex)
                         {
-                            Log($"[IMG Error] Не удалось сохранить {key}: {ex.Message}", Color.Orange);
+                            Log($"[IMG Error] Не удалось сохранить {key}: {ex.Message}", Color.DarkOrange);
                         }
                     }
                     else if (value is Icon icon)
@@ -142,19 +142,19 @@ namespace Resource_extractor
                             {
                                 icon.Save(fs);
                             }
-                            Log($"[ICON] Сохранено: {safeName}.ico", Color.LightGray);
+                            Log($"[ICON] Сохранено: {safeName}.ico", Color.DimGray);
                             countIcons++;
                         }
                         catch (Exception ex)
                         {
-                            Log($"[ICON Error] {key}: {ex.Message}", Color.Orange);
+                            Log($"[ICON Error] {key}: {ex.Message}", Color.DarkOrange);
                         }
                     }
                     else if (value is byte[] bytes)
                     {
                         string savePath = Path.Combine(dir, safeName + ".bin");
                         File.WriteAllBytes(savePath, bytes);
-                        Log($"[BIN] Сохранено: {safeName}.bin", Color.Yellow);
+                        Log($"[BIN] Сохранено: {safeName}.bin", Color.Teal);
                         countOther++;
                     }
                     else if (value is Stream stream)
@@ -167,12 +167,12 @@ namespace Resource_extractor
                         {
                             stream.CopyTo(fs);
                         }
-                        Log($"[AUDIO] Сохранен поток: {safeName}.wav", Color.Yellow);
+                        Log($"[AUDIO] Сохранен поток: {safeName}.wav", Color.Teal);
                         countOther++;
                     }
                     else
                     {
-                        Log($"[UNKNOWN] Пропущен тип: {value.GetType().Name} (Ключ: {key})", Color.Magenta);
+                        Log($"[UNKNOWN] Пропущен тип: {value.GetType().Name} (Ключ: {key})", Color.Purple);
                     }
                 }
             }
@@ -181,10 +181,10 @@ namespace Resource_extractor
             {
                 string txtPath = Path.Combine(dir, "_AllStrings.txt");
                 File.WriteAllText(txtPath, stringResources.ToString());
-                Log($"[TEXT] Все строки сохранены в: _AllStrings.txt ({countStrings} шт.)", Color.Green);
+                Log($"[TEXT] Все строки сохранены в: _AllStrings.txt ({countStrings} шт.)", Color.DarkGreen);
             }
 
-            Log($"\nСтатистика:\nКартинки: {countImages}\nИконки: {countIcons}\nТекст: {countStrings}\nДругое: {countOther}", Color.White);
+            Log($"\nСтатистика:\nКартинки: {countImages}\nИконки: {countIcons}\nТекст: {countStrings}\nДругое: {countOther}", Color.Black);
         }
 
         private string CleanFileName(string name)
@@ -203,8 +203,8 @@ namespace Resource_extractor
 
             rtbLog.SelectionColor = color;
             rtbLog.AppendText(msg + "\n");
-            rtbLog.SelectionColor = rtbLog.ForeColor;
 
+            rtbLog.SelectionColor = Color.Black;
             rtbLog.ScrollToCaret();
         }
     }
