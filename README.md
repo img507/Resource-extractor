@@ -44,4 +44,4 @@
 
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com/ВАШ_НИК/ResX-Extractor-Tool.git
+   git clone https://github.com/img507/Resource-extractor.git
