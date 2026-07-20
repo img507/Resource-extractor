@@ -26,7 +26,10 @@ namespace Resource_extractor
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     txtResxPath.Text = ofd.FileName;
-                    string proposedPath = Path.Combine(Path.GetDirectoryName(ofd.FileName), "Extracted_" + Path.GetFileNameWithoutExtension(ofd.FileName));
+
+                    string directoryName = Path.GetDirectoryName(ofd.FileName) ?? string.Empty;
+                    string proposedPath = Path.Combine(directoryName, "Extracted_" + Path.GetFileNameWithoutExtension(ofd.FileName));
+
                     txtOutputPath.Text = proposedPath;
                 }
             }
@@ -105,10 +108,10 @@ namespace Resource_extractor
             {
                 foreach (DictionaryEntry entry in reader)
                 {
-                    string key = entry.Key.ToString();
-                    object value = entry.Value;
+                    string? key = entry.Key?.ToString();
+                    object? value = entry.Value;
 
-                    if (value == null) continue;
+                    if (key == null || value == null) continue;
 
                     string safeName = CleanFileName(key);
 
