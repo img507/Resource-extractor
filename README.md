@@ -40,8 +40,11 @@
 
 ## 🛠️ Сборка проекта
 
-Проект написан на C# с использованием Windows Forms (.NET Framework).
+Проект написан на C# с использованием Windows Forms (.NET).
 
 1. Склонируйте репозиторий:
    ```bash
    git clone https://github.com/img507/Resource-extractor.git
+
+2. Откройте решение Resource extractor.sln в Visual Studio.
+3. Скомпилируйте проект в конфигурации Release для максимальной производительности.
