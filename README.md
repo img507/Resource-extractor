@@ -1,7 +1,7 @@
 # 📦 ResX Extractor Tool
 
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
-![.NET Framework](https://img.shields.io/badge/.NET_Framework-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
 **ResX Extractor Tool** — это удобная утилита с графическим интерфейсом (Windows Forms) для быстрого и безопасного извлечения любых вложенных ресурсов из файлов `.resx`. 
